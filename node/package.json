@@ -13,6 +13,7 @@
   "dependencies": {
     "fs-extra": "^11.3.2",
     "jsdom": "^27.0.0",
+    "png-to-ico": "^3.0.1",
     "sharp": "^0.34.4"
   },
   "devDependencies": {

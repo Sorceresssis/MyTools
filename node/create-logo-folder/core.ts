@@ -1,6 +1,7 @@
-// import { readFileSync, writeFileSync } from 'fs'
 import fse from 'fs-extra'
 import { JSDOM } from 'jsdom'
+// @ts-ignore - png-to-ico 没有类型定义
+import pngToIco from 'png-to-ico'
 import sharp from 'sharp'
 
 interface CreateLogoFolderIconOptions {
@@ -71,8 +72,11 @@ export async function createLogoFolderIcon({
   const serializer = new folderDom.window.XMLSerializer()
   const svgString = serializer.serializeToString(folderSvg)
 
-  // fse.outputFileSync(outputPath, svgString, 'utf-8')
-  await sharp(Buffer.from(svgString, 'utf-8'))
+  const pngBuffer = await sharp(Buffer.from(svgString, 'utf-8'))
     .resize(256, 256)
-    .toFile(outputPath)
+    .png()
+    .toBuffer()
+
+  const icoBuffer = await pngToIco(pngBuffer, outputPath)
+  fse.writeFileSync(outputPath, icoBuffer)
 }

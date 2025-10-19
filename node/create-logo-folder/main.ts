@@ -4,11 +4,9 @@ import fse from 'fs-extra'
 
 import { createLogoFolderIcon } from './core'
 
-
 const backgroundPath = nodepath.join(import.meta.dirname, 'assets', 'background', 'windows11-empty.svg')
 const logosPath = nodepath.join(import.meta.dirname, 'assets', 'logos')
-const foldersSavedPath = nodepath.join(import.meta.dirname, 'runs')
-
+const foldersSavedPath = nodepath.join(import.meta.dirname, 'runs', `folders_${new Date().getTime()}`)
 
 fse.readdirSync(logosPath).forEach(logofile => {
   if (!logofile.endsWith('.svg')) {

@@ -1,0 +1,12 @@
+{
+    "resource1": {
+        "addCircle": true,
+        "sizeInCircle": 155,
+        "circleColor": "#ffffff"
+    },
+    "model-area": {
+        "addCircle": true,
+        "sizeInCircle": 148,
+        "circleColor": "#ffffff"
+    }
+}
